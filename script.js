@@ -469,3 +469,116 @@ document.addEventListener('DOMContentLoaded', function() {
 // Pour simplifier, on pourrait re-créer les graphiques, mais ici
 // on laisse la version initiale. Les graphiques restent lisibles.
 // Pour une version parfaite, on pourrait utiliser un observer.
+
+// ============================================
+// 8. MODE DÉMO AUTOMATIQUE
+// ============================================
+const isDemoMode = new URLSearchParams(window.location.search).get('demo') === 'true';
+
+if (isDemoMode) {
+    console.log('🎬 Mode démo automatique activé');
+    
+    // Désactiver le scroll manuel
+    document.body.style.overflow = 'hidden';
+    
+    const sections = [
+        '#pipeline',
+        '#dashboard', 
+        '#insights',
+        '#reporting',
+        '#documentation'
+    ];
+    
+    let currentSection = 0;
+    let isScrolling = false;
+    
+    function autoScroll() {
+        if (isScrolling) return;
+        isScrolling = true;
+        
+        const target = document.querySelector(sections[currentSection]);
+        if (!target) {
+            isScrolling = false;
+            return;
+        }
+        
+        target.scrollIntoView({ behavior: 'smooth' });
+        
+        // Mettre en évidence l'élément
+        target.style.transition = 'box-shadow 0.5s ease';
+        target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.3)';
+        setTimeout(() => {
+            target.style.boxShadow = 'none';
+        }, 2000);
+        
+        currentSection = (currentSection + 1) % sections.length;
+        
+        setTimeout(() => {
+            isScrolling = false;
+            // Si on est à la fin, recommencer
+            if (currentSection === 0) {
+                setTimeout(autoScroll, 2000);
+            } else {
+                setTimeout(autoScroll, 3000);
+            }
+        }, 3000);
+    }
+    
+    // Démarrer après 2 secondes
+    setTimeout(() => {
+        // Lancer le pipeline automatiquement
+        if (typeof runPipeline === 'function') {
+            runPipeline();
+        }
+        setTimeout(autoScroll, 3000);
+    }, 2000);
+    
+    // Afficher un indicateur "Démo automatique"
+    const demoBanner = document.createElement('div');
+    demoBanner.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(37, 99, 235, 0.95);
+        color: white;
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        z-index: 9999;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+    `;
+    demoBanner.innerHTML = `
+        <span style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+            🎬 Démo automatique en cours
+        </span>
+        <span style="opacity: 0.6; font-weight: 400; font-size: 0.7rem;">
+            (cliquez pour arrêter)
+        </span>
+    `;
+    
+    demoBanner.addEventListener('click', function() {
+        // Arrêter la démo et supprimer la bannière
+        window.location.href = window.location.pathname;
+    });
+    
+    document.body.appendChild(demoBanner);
+    
+    // Ajouter le style pour le pulse
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    `;
+    document.head.appendChild(style);
+}
