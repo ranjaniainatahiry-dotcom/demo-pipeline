@@ -1,6 +1,6 @@
 # Pipeline Code – E-commerce Data Pipeline
 
-Code source complet du pipeline de données E-commerce.
+Complete source code for the E-commerce data pipeline.
 
 ## 📁 Structure
 
@@ -19,32 +19,32 @@ code/
 ## 🔧 Installation
 
 ```bash
-# Installer les dépendances Python
+# Install Python dependencies
 pip install -r code/scraping/requirements.txt
 
-# Installer le module Rust
+# Install Rust module
 cd code/transformation/rust_transformer
 maturin build --release
 pip install target/wheels/*.whl
 
-# Configurer les variables d'environnement
+# Configure environment variables
 cp .env.example .env
-# Éditer .env avec vos clés API
+# Edit .env with your API keys
 ```
 
-🚀 Utilisation
+🚀 Usage
 
 ```bash
-# 1. Scraper les données
+# 1. Scrape data
 python code/scraping/apify_scraper.py
 
-# 2. Transformer avec Rust
+# 2. Transform with Rust
 python code/transformation/polars_processor.py
 
-# 3. Charger dans TiDB
+# 3. Load to TiDB
 python code/storage/migration.py
 
-# 4. Analyse IA
+# 4. AI Analysis
 python code/ai_analysis/groq_analyzer.py
 
 # 5. Benchmarks
@@ -53,11 +53,11 @@ python code/benchmarks/performance_test.py
 
 📊 Performance
 
-Opération Pandas Polars Rust
+Operation Pandas Polars Rust
 1M rows filter 2.3s 0.8s 0.15s
 Aggregation 1.8s 0.6s 0.08s
 
-Rust est 15-30x plus rapide que Pandas 🚀
+Rust is 15-30x faster than Pandas 🚀
 
 📝 License
 
