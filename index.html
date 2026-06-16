@@ -574,6 +574,366 @@
         </div>
     </section>
 
+   <!-- ============================================ -->
+<!-- TECHNICAL ARCHITECTURE                       -->
+<!-- ============================================ -->
+<section id="technical" class="technical-section">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-code" style="color: #2563eb;"></i> Technical Architecture</h2>
+            <p class="section-desc">Code samples and architecture of the pipeline</p>
+        </div>
+
+        <div class="tech-tabs">
+            <button class="tech-tab active" data-tab="scraping">🕷️ Scraping</button>
+            <button class="tech-tab" data-tab="transformation">⚙️ Transformation</button>
+            <button class="tech-tab" data-tab="storage">🗄️ Storage</button>
+            <button class="tech-tab" data-tab="ai">🤖 AI Analysis</button>
+            <button class="tech-tab" data-tab="dashboard">📊 Dashboard</button>
+        </div>
+
+        <div class="tech-content">
+            <!-- Scraping -->
+            <div class="tech-panel active" id="panel-scraping">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python - Apify Scraper</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>from apify_client import ApifyClient
+import os
+
+# Initialize Apify client
+APIFY_API_KEY = os.getenv("APIFY_API_KEY")
+client = ApifyClient(APIFY_API_KEY)
+
+# Run Amazon product scraper
+actor = client.actor("delicious_zebu~amazon-product-data-scraper")
+run = actor.call(run_input={
+    "search": "wireless headphones",
+    "maxPages": 2,
+    "minRating": 4.5
+})
+
+# Collect results
+products = []
+for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    products.append({
+        "name": item.get("title"),
+        "price": float(item.get("price", "0").replace("$", "")),
+        "rating": float(item.get("rating", 0)),
+        "reviews": int(item.get("reviews", 0))
+    })
+
+print(f"✅ Scraped {len(products)} products")
+# Output: ✅ Scraped 47 products</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">JavaScript - Playwright Scraper</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>import { chromium } from 'playwright';
+
+async function scrapeTikTok() {
+    const browser = await chromium.launch();
+    const page = await browser.newPage();
+    
+    await page.goto('https://www.tiktok.com/search?q=trending');
+    await page.waitForSelector('[data-e2e="search-item"]');
+    
+    const products = await page.evaluate(() => {
+        const items = document.querySelectorAll('[data-e2e="search-item"]');
+        return Array.from(items).slice(0, 20).map(el => ({
+            title: el.querySelector('[data-e2e="title"]')?.innerText || '',
+            views: el.querySelector('[data-e2e="views"]')?.innerText || '0',
+            likes: el.querySelector('[data-e2e="likes"]')?.innerText || '0'
+        }));
+    });
+    
+    await browser.close();
+    return products;
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Transformation -->
+            <div class="tech-panel" id="panel-transformation">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Rust - Ultra-fast Processing (Maturin)</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>// src/lib.rs - Rust transformation module
+use pyo3::prelude::*;
+use rayon::prelude::*;
+
+#[pyclass]
+#[derive(Clone)]
+pub struct Product {
+    #[pyo3(get, set)]
+    pub name: String,
+    #[pyo3(get, set)]
+    pub price: f64,
+    #[pyo3(get, set)]
+    pub rating: f64,
+}
+
+#[pyfunction]
+pub fn process_data(products: Vec<Product>) -> PyResult<Vec<f64>> {
+    // Parallel processing with Rayon
+    let prices: Vec<f64> = products
+        .par_iter()
+        .map(|p| {
+            // Apply discount logic
+            if p.rating >= 4.5 {
+                p.price * 0.9  // 10% discount for high rating
+            } else {
+                p.price * 0.95 // 5% discount for others
+            }
+        })
+        .collect();
+    
+    Ok(prices)
+}
+
+#[pyfunction]
+pub fn calculate_stats(py: Python, products: Vec<Product>) -> PyResult<Vec<f64>> {
+    let prices: Vec<f64> = products.iter().map(|p| p.price).collect();
+    let sum: f64 = prices.par_iter().sum();
+    let avg = sum / prices.len() as f64;
+    let max = prices.par_iter().fold(|| 0.0, |a, b| a.max(*b)).max().unwrap();
+    
+    Ok(vec![avg, max])
+}
+
+#[pymodule]
+fn rust_transformer(_py: Python, m: &PyModule) -> PyResult<()> {
+    m.add_class::<Product>()?;
+    m.add_function(wrap_pyfunction!(process_data, m)?)?;
+    m.add_function(wrap_pyfunction!(calculate_stats, m)?)?;
+    Ok(())
+}</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python - Polars Processing</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>import polars as pl
+import rust_transformer  # Compiled Rust module
+
+# Load data
+df = pl.read_csv("products.csv")
+
+# Polars transformation (fast!)
+result = df.group_by("category").agg([
+    pl.col("price").mean().alias("avg_price"),
+    pl.col("rating").mean().alias("avg_rating"),
+    pl.col("sales").sum().alias("total_sales")
+])
+
+# Rust processing
+products = [{'name': r['name'], 'price': r['price'], 'rating': r['rating']} 
+            for r in df.rows()]
+processed = rust_transformer.process_data(products)
+
+print(f"✅ Processing complete: {len(processed)} products")
+print(f"📊 Average price: ${sum(processed)/len(processed):.2f}")</code></pre>
+                </div>
+            </div>
+
+            <!-- Storage -->
+            <div class="tech-panel" id="panel-storage">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">SQL - TiDB Cloud Schema</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>-- Distributed database schema (MySQL compatible)
+CREATE TABLE products (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    rating DECIMAL(3,2) DEFAULT 0,
+    reviews INT DEFAULT 0,
+    category VARCHAR(100),
+    source VARCHAR(50),
+    scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_category (category),
+    INDEX idx_rating (rating)
+) PARTITION BY HASH(id) PARTITIONS 8;
+
+-- Real-time analytics query
+SELECT 
+    category,
+    COUNT(*) as product_count,
+    AVG(price) as avg_price,
+    AVG(rating) as avg_rating,
+    SUM(reviews) as total_reviews
+FROM products
+WHERE scraped_at > DATE_SUB(NOW(), INTERVAL 7 DAY)
+GROUP BY category
+ORDER BY avg_rating DESC;
+
+-- Vector search for similar products
+SELECT name, price, rating,
+    VEC_DISTANCE(embedding, '[0.1, 0.2, ...]') as similarity
+FROM products
+ORDER BY similarity
+LIMIT 10;</code></pre>
+                </div>
+            </div>
+
+            <!-- AI Analysis -->
+            <div class="tech-panel" id="panel-ai">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python - GROQ AI Analysis</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>from groq import Groq
+import json
+
+def analyze_trends(products):
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    
+    # Prepare data summary
+    data_summary = {
+        "total_products": len(products),
+        "avg_price": sum(p.price for p in products) / len(products),
+        "top_categories": get_top_categories(products),
+        "price_trends": get_price_trends(products)
+    }
+    
+    response = client.chat.completions.create(
+        model="mixtral-8x7b-32768",
+        messages=[
+            {"role": "system", "content": """You are a market intelligence analyst.
+            Analyze the data and provide:
+            1. Top 3 trends
+            2. 3 actionable recommendations
+            3. 1 critical alert
+            Format as JSON."""},
+            {"role": "user", "content": json.dumps(data_summary)}
+        ],
+        temperature=0.3,
+        max_tokens=500
+    )
+    
+    insights = json.loads(response.choices[0].message.content)
+    return insights
+
+# Example output
+"""
+{
+  "trends": [
+    "Wireless headphones up 47% this week",
+    "Smart home devices gaining popularity",
+    "Premium products seeing higher engagement"
+  ],
+  "recommendations": [
+    "Focus on products with rating > 4.5",
+    "Adjust pricing for Smart Home category (-12%)",
+    "Increase stock of trending items"
+  ],
+  "alerts": [
+    "New competitor detected with 15% lower price"
+  ]
+}
+"""</code></pre>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="tech-panel" id="panel-dashboard">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">JavaScript - Dashboard Charts (Chart.js)</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>// Chart.js - Interactive dashboard
+const ctx = document.getElementById('trendsChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+        datasets: [{
+            label: 'SoundMax Pro',
+            data: [65, 72, 80, 120, 145],
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            fill: true,
+            tension: 0.4
+        }, {
+            label: 'SmartHub X1',
+            data: [40, 55, 60, 75, 90],
+            borderColor: '#7c3aed',
+            backgroundColor: 'rgba(124, 58, 237, 0.1)',
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            tooltip: {
+                backgroundColor: '#ffffff',
+                borderColor: '#e2e8f0',
+                borderWidth: 1
+            }
+        },
+        scales: {
+            x: { grid: { color: '#e2e8f0' } },
+            y: { grid: { color: '#e2e8f0' } }
+        }
+    }
+});
+
+// Real-time update
+setInterval(() => {
+    fetch('/api/latest-data')
+        .then(res => res.json())
+        .then(data => {
+            chart.data.datasets[0].data = data.sales;
+            chart.update();
+        });
+}, 30000); // Update every 30 seconds</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python - Superset Dashboard</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code># Apache Superset Configuration
+from superset import app
+from superset.connectors.sqla.models import SqlaTable
+
+# Connect to TiDB Cloud
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    'mysql+pymysql://user:password@gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com:4000/db'
+)
+
+# Create dashboard
+dashboard = app.create_dashboard(
+    name="E-commerce Market Intelligence",
+    description="Real-time product analytics",
+    charts=[
+        {"name": "Price Trends", "type": "line", "query": "SELECT...",},
+        {"name": "Top Products", "type": "bar", "query": "SELECT...",},
+        {"name": "Rating Distribution", "type": "pie", "query": "SELECT...",},
+    ]
+)
+
+# Deploy to Render
+# Hosted at: https://superset-dashboard-2.onrender.com</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        
     <!-- ============================================ -->
     <!-- FOOTER                                       -->
     <!-- ============================================ -->
