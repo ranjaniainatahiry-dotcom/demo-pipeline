@@ -1154,3 +1154,140 @@ a {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
 }
+/* ============================================
+   TECHNICAL ARCHITECTURE
+   ============================================ */
+.technical-section {
+    padding: 60px 0;
+    background: var(--bg-secondary);
+}
+
+.tech-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tech-tab {
+    padding: 8px 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font);
+}
+
+.tech-tab:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.tech-tab.active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+.tech-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tech-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tech-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.code-block {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-lang {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.copy-btn {
+    background: var(--border-color);
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font);
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+.code-block pre {
+    padding: 16px;
+    margin: 0;
+    overflow-x: auto;
+    background: var(--bg-primary);
+}
+
+.code-block code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.code-block code .comment {
+    color: var(--text-muted);
+}
+
+.code-block code .keyword {
+    color: #7c3aed;
+}
+
+.code-block code .string {
+    color: #16a34a;
+}
+
+.code-block code .function {
+    color: #2563eb;
+}
+
+[data-theme="dark"] .code-block {
+    background: #0f172a;
+}
+
+[data-theme="dark"] .code-block code {
+    color: #e2e8f0;
+}
