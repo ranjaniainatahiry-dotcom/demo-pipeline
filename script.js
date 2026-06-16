@@ -582,3 +582,57 @@ if (isDemoMode) {
     `;
     document.head.appendChild(style);
 }
+
+// ============================================
+// 9. MODE EMBED (?embed=true)
+// ============================================
+const isEmbedMode = new URLSearchParams(window.location.search).get('embed') === 'true';
+
+if (isEmbedMode) {
+    console.log('📦 Mode embed activé');
+    
+    // Cacher les éléments superflus
+    const elementsToHide = [
+        document.querySelector('nav.navbar'),
+        document.querySelector('footer.footer'),
+        document.querySelector('.hero'),
+        document.querySelector('.pipeline-controls'),
+    ];
+    
+    elementsToHide.forEach(el => {
+        if (el) {
+            el.style.display = 'none';
+        }
+    });
+    
+    // Réduire les marges
+    document.querySelectorAll('section').forEach(section => {
+        section.style.padding = '20px 0';
+        section.style.minHeight = 'auto';
+    });
+    
+    // Ajuster la hauteur pour l'embed
+    document.body.style.padding = '0';
+    document.body.style.margin = '0';
+    document.body.style.background = 'var(--bg-primary)';
+    
+    // Ajouter un petit indicateur "Embed mode"
+    const embedIndicator = document.createElement('div');
+    embedIndicator.style.cssText = `
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(37, 99, 235, 0.1);
+        backdrop-filter: blur(8px);
+        color: var(--text-secondary);
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+        z-index: 999;
+    `;
+    embedIndicator.textContent = '📦 Mode embed';
+    document.body.appendChild(embedIndicator);
+}
