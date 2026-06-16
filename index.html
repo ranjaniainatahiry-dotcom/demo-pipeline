@@ -3,188 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pipeline Demo – Ranjaniaina Tahiry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Data Pipeline Pro – Ranjaniaina Tahiry</title>
+    <meta name="description" content="Démonstration professionnelle du pipeline E-commerce de Ranjaniaina Tahiry">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
+    <!-- ============================================ -->
+    <!-- NAVIGATION                                   -->
+    <!-- ============================================ -->
+    <nav class="navbar" role="navigation">
         <div class="container">
-            <div class="logo">
-                <span class="icon">⚡</span>
+            <div class="nav-brand">
+                <i class="fas fa-bolt" style="color: #2563eb;"></i>
                 <span>Ranjaniaina Tahiry</span>
             </div>
-            <nav>
-                <a href="#pipeline">Pipeline</a>
-                <a href="#dashboard">Dashboard</a>
-                <a href="#insights">AI Insights</a>
-                <a href="#reporting">Reporting</a>
-            </nav>
-            <div class="status">
-                <span class="dot"></span>
-                Pipeline 100% Automatique
+            
+            <ul class="nav-links">
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#insights">AI Insights</a></li>
+                <li><a href="#reporting">Reporting</a></li>
+                <li><a href="#documentation">Docs</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="https://github.com/ranjaniainatahiry-dotcom" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- HERO                                         -->
+    <!-- ============================================ -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-robot"></i>
+                100% Automatique • 0 Intervention
+            </div>
+            <h1>E-commerce Data Pipeline</h1>
+            <p class="hero-subtitle">
+                Scraping → Transformation → Stockage → IA → Dashboard
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="12847">0</span>
+                    <span class="stat-label">Produits scrappés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">0</span>
+                    <span class="stat-label">Sources de données</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="99.9">0</span>
+                    <span class="stat-label">% Disponibilité</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="365">0</span>
+                    <span class="stat-label">Jours d'historique</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- ============================================ -->
+    <!-- PIPELINE VISUAL                              -->
+    <!-- ============================================ -->
+    <section id="pipeline" class="pipeline-section">
         <div class="container">
-            <h1>🔄 E-commerce Data Pipeline</h1>
-            <p class="subtitle">De la collecte au dashboard – 0 intervention manuelle</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="number">10K+</span>
-                    <span class="label">Produits scrapés</span>
-                </div>
-                <div class="stat">
-                    <span class="number">24/7</span>
-                    <span class="label">Automatisation</span>
-                </div>
-                <div class="stat">
-                    <span class="number">99.9%</span>
-                    <span class="label">Disponibilité</span>
-                </div>
+            <div class="section-header">
+                <h2><i class="fas fa-sync-alt"></i> Pipeline en temps réel</h2>
+                <p class="section-desc">Visualisation dynamique de l'exécution du pipeline</p>
             </div>
-        </div>
-    </section>
 
-    <!-- PIPELINE VISUAL -->
-    <section id="pipeline" class="pipeline">
-        <div class="container">
-            <h2>📋 Pipeline en temps réel</h2>
             <div class="pipeline-flow">
-                <div class="step" data-step="1">
-                    <div class="step-icon">🕷️</div>
-                    <div class="step-label">Scraping</div>
-                    <div class="step-desc">Amazon, TikTok, Google</div>
+                <div class="pipeline-step" data-step="1">
+                    <div class="step-icon-wrapper">
+                        <i class="fas fa-spider"></i>
+                        <span class="step-number">01</span>
+                    </div>
+                    <h4>Collecte</h4>
+                    <p>Apify • Playwright • TrendsMCP</p>
+                    <span class="step-status">En attente</span>
                 </div>
-                <div class="arrow">→</div>
-                <div class="step" data-step="2">
-                    <div class="step-icon">⚙️</div>
-                    <div class="step-label">Transformation</div>
-                    <div class="step-desc">Polars / Rust</div>
+
+                <div class="pipeline-arrow">
+                    <i class="fas fa-arrow-right"></i>
                 </div>
-                <div class="arrow">→</div>
-                <div class="step" data-step="3">
-                    <div class="step-icon">🗄️</div>
-                    <div class="step-label">Stockage</div>
-                    <div class="step-desc">TiDB Cloud</div>
+
+                <div class="pipeline-step" data-step="2">
+                    <div class="step-icon-wrapper">
+                        <i class="fas fa-cogs"></i>
+                        <span class="step-number">02</span>
+                    </div>
+                    <h4>Transformation</h4>
+                    <p>Polars • DuckDB • Rust</p>
+                    <span class="step-status">En attente</span>
                 </div>
-                <div class="arrow">→</div>
-                <div class="step" data-step="4">
-                    <div class="step-icon">🤖</div>
-                    <div class="step-label">AI Analysis</div>
-                    <div class="step-desc">GROQ / Lightning</div>
+
+                <div class="pipeline-arrow">
+                    <i class="fas fa-arrow-right"></i>
                 </div>
-                <div class="arrow">→</div>
-                <div class="step" data-step="5">
-                    <div class="step-icon">📊</div>
-                    <div class="step-label">Dashboard</div>
-                    <div class="step-desc">Apache Superset</div>
+
+                <div class="pipeline-step" data-step="3">
+                    <div class="step-icon-wrapper">
+                        <i class="fas fa-database"></i>
+                        <span class="step-number">03</span>
+                    </div>
+                    <h4>Stockage</h4>
+                    <p>TiDB Cloud • 5 Go</p>
+                    <span class="step-status">En attente</span>
+                </div>
+
+                <div class="pipeline-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="pipeline-step" data-step="4">
+                    <div class="step-icon-wrapper">
+                        <i class="fas fa-brain"></i>
+                        <span class="step-number">04</span>
+                    </div>
+                    <h4>IA Analysis</h4>
+                    <p>GROQ • Lightning AI</p>
+                    <span class="step-status">En attente</span>
+                </div>
+
+                <div class="pipeline-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="pipeline-step" data-step="5">
+                    <div class="step-icon-wrapper">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="step-number">05</span>
+                    </div>
+                    <h4>Dashboard</h4>
+                    <p>Apache Superset</p>
+                    <span class="step-status">En attente</span>
                 </div>
             </div>
-            <div class="pipeline-status">
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
+
+            <div class="pipeline-controls">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="progress-label">0%</span>
                 </div>
-                <p class="status-text">⏳ Démarrage du pipeline...</p>
+                <div class="pipeline-message">
+                    <i class="fas fa-circle" style="color: #22c55e; font-size: 0.6rem;"></i>
+                    <span>Pipeline prêt à démarrer</span>
+                </div>
+                <button id="startPipeline" class="btn-primary">
+                    <i class="fas fa-play"></i> Démarrer
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- DASHBOARD -->
-    <section id="dashboard" class="dashboard">
+    <!-- ============================================ -->
+    <!-- DASHBOARD BI                                 -->
+    <!-- ============================================ -->
+    <section id="dashboard" class="dashboard-section">
         <div class="container">
-            <h2>📊 Dashboard BI – E-commerce</h2>
-            <div class="dashboard-grid">
-                <div class="card">
-                    <h3>📈 Tendances de recherche</h3>
-                    <canvas id="trendsChart"></canvas>
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Dashboard BI</h2>
+                <p class="section-desc">Métriques clés et visualisations interactives</p>
+                <div class="dashboard-filters">
+                    <button class="filter-btn active" data-period="7">7 jours</button>
+                    <button class="filter-btn" data-period="30">30 jours</button>
+                    <button class="filter-btn" data-period="90">90 jours</button>
                 </div>
-                <div class="card">
-                    <h3>🏷️ Top produits</h3>
-                    <canvas id="productsChart"></canvas>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #dbeafe;">
+                        <i class="fas fa-shopping-cart" style="color: #2563eb;"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Ventes estimées</span>
+                        <span class="kpi-value">€342,8K</span>
+                        <span class="kpi-change positive">+12.3%</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>💰 Prix moyen par catégorie</h3>
-                    <canvas id="pricesChart"></canvas>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #dcfce7;">
+                        <i class="fas fa-star" style="color: #16a34a;"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Note moyenne</span>
+                        <span class="kpi-value">4.7</span>
+                        <span class="kpi-change positive">+0.3</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>⭐ Distribution des avis</h3>
-                    <canvas id="ratingsChart"></canvas>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #fef3c7;">
+                        <i class="fas fa-tag" style="color: #d97706;"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Prix moyen</span>
+                        <span class="kpi-value">€89</span>
+                        <span class="kpi-change negative">-4.2%</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #fce7f3;">
+                        <i class="fas fa-users" style="color: #db2777;"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Concurrents actifs</span>
+                        <span class="kpi-value">24</span>
+                        <span class="kpi-change positive">+2</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-fire" style="color: #ef4444;"></i> Tendances de recherche</h4>
+                        <span class="chart-tooltip" title="Évolution des recherches par produit">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <span>Source: Google Trends • 30 jours</span>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-crown" style="color: #d97706;"></i> Top produits</h4>
+                        <span class="chart-tooltip" title="Produits les plus performants">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="productsChart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <span>Par volume de ventes</span>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-euro-sign" style="color: #16a34a;"></i> Prix par catégorie</h4>
+                        <span class="chart-tooltip" title="Prix moyen par catégorie">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="pricesChart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <span>Comparatif des catégories</span>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-star-half-alt" style="color: #8b5cf6;"></i> Distribution des avis</h4>
+                        <span class="chart-tooltip" title="Répartition des évaluations">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="ratingsChart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <span>Basé sur 10 847 avis</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI INSIGHTS -->
-    <section id="insights" class="insights">
+    <!-- ============================================ -->
+    <!-- AI INSIGHTS                                  -->
+    <!-- ============================================ -->
+    <section id="insights" class="insights-section">
         <div class="container">
-            <h2>🤖 AI Insights (GROQ)</h2>
-            <div class="insight-grid">
-                <div class="insight-card">
-                    <div class="insight-icon">🔥</div>
-                    <div class="insight-content">
-                        <h4>Produit tendance</h4>
-                        <p>"Les écouteurs sans fil <strong>SoundMax Pro</strong> ont vu une augmentation de <strong>47%</strong> des recherches cette semaine."</p>
+            <div class="section-header">
+                <h2><i class="fas fa-robot" style="color: #8b5cf6;"></i> AI Insights</h2>
+                <p class="section-desc">Analyses et recommandations générées par GROQ</p>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card trending">
+                    <div class="insight-badge">
+                        <i class="fas fa-fire"></i> Tendance
+                    </div>
+                    <div class="insight-icon-wrapper">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="insight-body">
+                        <h4>SoundMax Pro</h4>
+                        <p>Augmentation de <strong>47%</strong> des recherches cette semaine.</p>
+                        <div class="insight-meta">
+                            <span><i class="far fa-clock"></i> Mis à jour aujourd'hui</span>
+                            <span><i class="fas fa-chart-line"></i> +47%</span>
+                        </div>
+                        <div class="insight-confidence">
+                            <span>Confiance</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 95%;"></div>
+                            </div>
+                            <span>95%</span>
+                        </div>
                     </div>
                 </div>
-                <div class="insight-card">
-                    <div class="insight-icon">📉</div>
-                    <div class="insight-content">
-                        <h4>Opportunité prix</h4>
-                        <p>"La catégorie <strong>Smart Home</strong> a un prix moyen de <strong>$89</strong>, en baisse de 12% par rapport au mois dernier."</p>
+
+                <div class="insight-card opportunity">
+                    <div class="insight-badge">
+                        <i class="fas fa-bullseye"></i> Opportunité
+                    </div>
+                    <div class="insight-icon-wrapper">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="insight-body">
+                        <h4>Smart Home</h4>
+                        <p>Prix moyen en baisse de <strong>12%</strong> ce mois.</p>
+                        <div class="insight-meta">
+                            <span><i class="far fa-calendar"></i> Dernier mois</span>
+                            <span><i class="fas fa-arrow-down" style="color: #ef4444;"></i> -12%</span>
+                        </div>
+                        <div class="insight-confidence">
+                            <span>Confiance</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 88%;"></div>
+                            </div>
+                            <span>88%</span>
+                        </div>
                     </div>
                 </div>
-                <div class="insight-card">
-                    <div class="insight-icon">⭐</div>
-                    <div class="insight-content">
-                        <h4>Recommandation</h4>
-                        <p>"Concentrer le scraping sur les produits avec <strong>rating > 4.5</strong> – ils représentent <strong>68%</strong> des ventes."</p>
+
+                <div class="insight-card recommendation">
+                    <div class="insight-badge">
+                        <i class="fas fa-lightbulb"></i> Recommandation
+                    </div>
+                    <div class="insight-icon-wrapper">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="insight-body">
+                        <h4>Focus Rating > 4.5</h4>
+                        <p>Ces produits représentent <strong>68%</strong> des ventes.</p>
+                        <div class="insight-meta">
+                            <span><i class="fas fa-percentage"></i> 68% du CA</span>
+                            <span><i class="fas fa-arrow-up" style="color: #22c55e;"></i> Stratégie</span>
+                        </div>
+                        <div class="insight-confidence">
+                            <span>Confiance</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 92%;"></div>
+                            </div>
+                            <span>92%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight-card alert">
+                    <div class="insight-badge">
+                        <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> Alerte
+                    </div>
+                    <div class="insight-icon-wrapper">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="insight-body">
+                        <h4>Nouveau concurrent</h4>
+                        <p><strong>SoundMax Pro</strong> a un nouveau concurrent avec un prix inférieur de <strong>15%</strong>.</p>
+                        <div class="insight-meta">
+                            <span><i class="far fa-clock"></i> Détecté il y a 2h</span>
+                            <span><i class="fas fa-flag"></i> Urgence</span>
+                        </div>
+                        <div class="insight-confidence">
+                            <span>Confiance</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 78%;"></div>
+                            </div>
+                            <span>78%</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REPORTING -->
-    <section id="reporting" class="reporting">
+    <!-- ============================================ -->
+    <!-- REPORTING                                    -->
+    <!-- ============================================ -->
+    <section id="reporting" class="reporting-section">
         <div class="container">
-            <h2>📧 Reporting automatisé</h2>
+            <div class="section-header">
+                <h2><i class="fas fa-envelope"></i> Reporting automatisé</h2>
+                <p class="section-desc">Exemple de rapport quotidien envoyé par Gmail API</p>
+            </div>
+
             <div class="email-preview">
                 <div class="email-header">
-                    <span class="from">📤 De : pipeline@ranjaniaina.com</span>
-                    <span class="to">📥 À : client@entreprise.com</span>
-                    <span class="date">📅 16 Juin 2026</span>
+                    <div class="email-sender">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <strong>Pipeline Automatique</strong>
+                            <span>pipeline@ranjaniaina.com</span>
+                        </div>
+                    </div>
+                    <div class="email-recipient">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <strong>Client</strong>
+                            <span>client@entreprise.com</span>
+                        </div>
+                    </div>
+                    <span class="email-date"><i class="far fa-calendar-alt"></i> 16 Juin 2026</span>
                 </div>
+
                 <div class="email-body">
-                    <h3>📊 Rapport quotidien – E-commerce</h3>
-                    <ul>
-                        <li>✅ <strong>12 847</strong> produits scrappés (Amazon, TikTok)</li>
-                        <li>📈 <strong>3</strong> nouvelles tendances identifiées</li>
-                        <li>🤖 <strong>8</strong> recommandations IA générées</li>
-                        <li>📊 Dashboard mis à jour : <a href="#" onclick="alert('Dashboard accessible !')">Voir le dashboard</a></li>
-                    </ul>
-                    <div class="email-footer">
-                        <span>🔗 Lien permanent : <a href="#" onclick="alert('Rapport complet disponible !')">report.ranjaniaina.com/2026-06-16</a></span>
+                    <div class="email-subject">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Rapport quotidien – E-commerce Market Intelligence</h3>
+                        <span class="email-status delivered"><i class="fas fa-check-circle"></i> Livré</span>
+                    </div>
+
+                    <div class="email-content">
+                        <div class="email-summary">
+                            <div class="summary-item">
+                                <i class="fas fa-check-circle" style="color: #22c55e;"></i>
+                                <span><strong>12 847</strong> produits scrappés</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-chart-line" style="color: #2563eb;"></i>
+                                <span><strong>3</strong> nouvelles tendances</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-robot" style="color: #8b5cf6;"></i>
+                                <span><strong>8</strong> recommandations IA</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-file-invoice" style="color: #d97706;"></i>
+                                <span>Dashboard <strong>mis à jour</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="email-details">
+                            <h4>📋 Résumé détaillé</h4>
+                            <ul>
+                                <li>
+                                    <span class="bullet"></span>
+                                    <strong>Collecte :</strong> 12 847 produits (Amazon 9 234, TikTok 3 613)
+                                </li>
+                                <li>
+                                    <span class="bullet"></span>
+                                    <strong>Analyse :</strong> 3 nouvelles tendances identifiées, 2 opportunités de prix
+                                </li>
+                                <li>
+                                    <span class="bullet"></span>
+                                    <strong>Recommandations :</strong> Focus sur SoundMax Pro, ajustement prix Smart Home
+                                </li>
+                                <li>
+                                    <span class="bullet"></span>
+                                    <strong>Dashboard :</strong> <a href="https://superset-dashboard-2.onrender.com" target="_blank">Accéder au dashboard</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="email-footer">
+                            <div class="email-links">
+                                <a href="#" class="btn-secondary" onclick="alert('Rapport complet disponible !')">
+                                    <i class="fas fa-file-pdf"></i> Rapport PDF
+                                </a>
+                                <a href="#" class="btn-secondary" onclick="alert('Dashboard accessible !')">
+                                    <i class="fas fa-chart-pie"></i> Dashboard
+                                </a>
+                                <a href="#" class="btn-secondary" onclick="alert('Données brutes disponibles !')">
+                                    <i class="fas fa-database"></i> Données brutes
+                                </a>
+                            </div>
+                            <p class="email-note">
+                                <i class="fas fa-info-circle"></i>
+                                Lien permanent : <strong>report.ranjaniaina.com/2026-06-16</strong>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- ============================================ -->
+    <!-- DOCUMENTATION                                -->
+    <!-- ============================================ -->
+    <section id="documentation" class="docs-section">
         <div class="container">
-            <p>© 2026 Ranjaniaina Tahiry – Data & Automation Engineer</p>
-            <div class="footer-links">
-                <a href="mailto:ranjaniainatahiry@gmail.com">📧 Email</a>
-                <a href="https://github.com/ranjaniainatahiry-dotcom">🐙 GitHub</a>
-                <a href="https://superset-dashboard-2.onrender.com">📊 Superset Live</a>
+            <div class="section-header">
+                <h2><i class="fas fa-book"></i> Documentation technique</h2>
+                <p class="section-desc">Architecture et technologies utilisées</p>
+            </div>
+
+            <div class="docs-grid">
+                <div class="docs-card">
+                    <div class="docs-icon"><i class="fas fa-cloud"></i></div>
+                    <h4>Infrastructure</h4>
+                    <ul>
+                        <li><span class="tech-tag">Google Colab</span> Développement & tests</li>
+                        <li><span class="tech-tag">Lightning AI</span> GPU T4/A100</li>
+                        <li><span class="tech-tag">TiDB Cloud</span> Stockage 5 Go</li>
+                        <li><span class="tech-tag">Render</span> Hébergement Superset</li>
+                    </ul>
+                </div>
+
+                <div class="docs-card">
+                    <div class="docs-icon"><i class="fas fa-code"></i></div>
+                    <h4>Stack technique</h4>
+                    <ul>
+                        <li><span class="tech-tag">Python</span> Scripting & orchestration</li>
+                        <li><span class="tech-tag">Rust</span> Transformations ultra-rapides</li>
+                        <li><span class="tech-tag">Polars</span> Data processing</li>
+                        <li><span class="tech-tag">DuckDB</span> SQL embarqué</li>
+                    </ul>
+                </div>
+
+                <div class="docs-card">
+                    <div class="docs-icon"><i class="fas fa-robot"></i></div>
+                    <h4>AI & ML</h4>
+                    <ul>
+                        <li><span class="tech-tag">GROQ</span> Analyse & recommandations</li>
+                        <li><span class="tech-tag">scikit-learn</span> Modèles ML</li>
+                        <li><span class="tech-tag">AutoML</span> Sélection automatique</li>
+                        <li><span class="tech-tag">Lightning AI</span> Entraînement GPU</li>
+                    </ul>
+                </div>
+
+                <div class="docs-card">
+                    <div class="docs-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Sécurité & Automatisation</h4>
+                    <ul>
+                        <li><span class="tech-tag">GitHub Actions</span> CI/CD cron jobs</li>
+                        <li><span class="tech-tag">Prefect</span> Workflows robustes</li>
+                        <li><span class="tech-tag">Gmail API</span> Reports automatisés</li>
+                        <li><span class="tech-tag">cron-job.org</span> Health checks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-bolt" style="color: #2563eb;"></i>
+                    <span>Ranjaniaina Tahiry</span>
+                    <span class="footer-title">Data & Automation Engineer</span>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:ranjaniainatahiry@gmail.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://github.com/ranjaniainatahiry-dotcom" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://superset-dashboard-2.onrender.com" target="_blank">
+                        <i class="fas fa-chart-pie"></i> Superset
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Ranjaniaina Tahiry – Tous droits réservés</span>
+                <span class="footer-version">v2.0 • Démo optimisée</span>
             </div>
         </div>
     </footer>
