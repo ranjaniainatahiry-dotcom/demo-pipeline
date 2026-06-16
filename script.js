@@ -636,3 +636,53 @@ if (isEmbedMode) {
     embedIndicator.textContent = '📦 Mode embed';
     document.body.appendChild(embedIndicator);
 }
+// ============================================
+// 10. TECHNICAL TABS
+// ============================================
+document.querySelectorAll('.tech-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+
+        // Hide all panels
+        document.querySelectorAll('.tech-panel').forEach(p => p.classList.remove('active'));
+
+        // Show selected panel
+        const panelId = 'panel-' + this.getAttribute('data-tab');
+        document.getElementById(panelId).classList.add('active');
+    });
+});
+
+// ============================================
+// 11. COPY CODE FUNCTION
+// ============================================
+function copyCode(button) {
+    const codeBlock = button.closest('.code-block');
+    const code = codeBlock.querySelector('code');
+    
+    if (code) {
+        const text = code.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            // Visual feedback
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            button.textContent = '✅ Copied!';
+            setTimeout(() => {
+                button.textContent = '📋 Copy';
+            }, 2000);
+        });
+    }
+}
