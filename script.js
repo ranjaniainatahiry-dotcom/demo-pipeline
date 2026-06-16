@@ -1,5 +1,5 @@
 // ============================================
-// 1. THEME TOGGLE (Clair/Sombre)
+// 1. THEME TOGGLE
 // ============================================
 const themeToggle = document.getElementById('themeToggle');
 const currentTheme = localStorage.getItem('theme') || 'light';
@@ -23,7 +23,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 // ============================================
-// 2. ANIMATION DES STATS (Comptage)
+// 2. STATS ANIMATION (Counter)
 // ============================================
 const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -69,21 +69,20 @@ const pipelineMessage = document.querySelector('.pipeline-message span');
 const startBtn = document.getElementById('startPipeline');
 let isRunning = false;
 
-const stepLabels = ['Collecte', 'Transformation', 'Stockage', 'IA Analysis', 'Dashboard'];
-const stepIcons = ['fa-spider', 'fa-cogs', 'fa-database', 'fa-brain', 'fa-chart-pie'];
+const stepLabels = ['Collection', 'Transformation', 'Storage', 'AI Analysis', 'Dashboard'];
 const stepStatuses = document.querySelectorAll('.step-status');
 
 function resetPipeline() {
     steps.forEach(step => step.classList.remove('active'));
     stepStatuses.forEach(status => {
-        status.textContent = 'En attente';
+        status.textContent = 'Pending';
         status.className = 'step-status';
     });
     progressFill.style.width = '0%';
     progressLabel.textContent = '0%';
-    pipelineMessage.textContent = 'Pipeline prêt à démarrer';
+    pipelineMessage.textContent = 'Pipeline ready to start';
     startBtn.disabled = false;
-    startBtn.innerHTML = '<i class="fas fa-play"></i> Démarrer';
+    startBtn.innerHTML = '<i class="fas fa-play"></i> Start Pipeline';
     isRunning = false;
 }
 
@@ -91,41 +90,40 @@ function runPipeline() {
     if (isRunning) return;
     isRunning = true;
     startBtn.disabled = true;
-    startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> En cours...';
+    startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Running...';
 
     let currentStep = 0;
     const totalSteps = steps.length;
 
     function executeStep() {
         if (currentStep >= totalSteps) {
-            // Pipeline terminé
-            pipelineMessage.textContent = '✅ Pipeline terminé ! Toutes les données sont à jour. 🚀';
+            // Pipeline complete
+            pipelineMessage.textContent = '✅ Pipeline complete! All data is up to date. 🚀';
             startBtn.disabled = false;
-            startBtn.innerHTML = '<i class="fas fa-redo"></i> Rejouer';
+            startBtn.innerHTML = '<i class="fas fa-redo"></i> Replay';
             isRunning = false;
 
-            // Marquer toutes les étapes comme terminées
             stepStatuses.forEach(status => {
-                status.textContent = '✅ Terminé';
+                status.textContent = '✅ Done';
                 status.className = 'step-status done';
             });
             return;
         }
 
-        // Activer l'étape courante
+        // Activate current step
         steps[currentStep].classList.add('active');
-        stepStatuses[currentStep].textContent = '⏳ En cours';
+        stepStatuses[currentStep].textContent = '⏳ Running';
         stepStatuses[currentStep].className = 'step-status active';
 
-        // Mettre à jour la progression
+        // Update progress
         const progress = ((currentStep + 1) / totalSteps) * 100;
         progressFill.style.width = progress + '%';
         progressLabel.textContent = Math.round(progress) + '%';
-        pipelineMessage.textContent = `⏳ Pipeline : ${stepLabels[currentStep]}...`;
+        pipelineMessage.textContent = `⏳ Pipeline: ${stepLabels[currentStep]}...`;
 
-        // Désactiver les étapes précédentes (optionnel)
+        // Mark previous as done
         if (currentStep > 0) {
-            stepStatuses[currentStep - 1].textContent = '✅ Terminé';
+            stepStatuses[currentStep - 1].textContent = '✅ Done';
             stepStatuses[currentStep - 1].className = 'step-status done';
         }
 
@@ -138,7 +136,6 @@ function runPipeline() {
 
 startBtn.addEventListener('click', () => {
     if (isRunning) return;
-    // Reset si déjà terminé
     if (progressFill.style.width === '100%') {
         resetPipeline();
     }
@@ -146,13 +143,12 @@ startBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 4. CHART.JS – GRAPHIQUES
+// 4. CHART.JS – CHARTS
 // ============================================
 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 const textColor = isDark ? '#94a3b8' : '#475569';
 const gridColor = isDark ? '#334155' : '#e2e8f0';
 
-// Couleurs
 const colors = {
     blue: '#2563eb',
     blueLight: '#3b82f6',
@@ -164,12 +160,12 @@ const colors = {
     pink: '#db2777',
 };
 
-// 4.1 – Tendances
+// 4.1 – Trends
 const trendsCtx = document.getElementById('trendsChart').getContext('2d');
 new Chart(trendsCtx, {
     type: 'line',
     data: {
-        labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
         datasets: [
             {
                 label: 'SoundMax Pro',
@@ -242,14 +238,14 @@ new Chart(trendsCtx, {
     }
 });
 
-// 4.2 – Top produits
+// 4.2 – Top Products
 const productsCtx = document.getElementById('productsChart').getContext('2d');
 new Chart(productsCtx, {
     type: 'bar',
     data: {
         labels: ['SoundMax Pro', 'SmartHub X1', 'FitBand 5', 'ChargeBoost', 'Lumina Light', 'EcoCook'],
         datasets: [{
-            label: 'Ventes estimées (unités)',
+            label: 'Estimated Sales (units)',
             data: [1450, 1200, 980, 850, 720, 680],
             backgroundColor: [
                 colors.blue, colors.purple, colors.green,
@@ -275,7 +271,7 @@ new Chart(productsCtx, {
                 cornerRadius: 8,
                 callbacks: {
                     label: function(context) {
-                        return context.parsed.x + ' unités';
+                        return context.parsed.x + ' units';
                     }
                 }
             }
@@ -293,14 +289,14 @@ new Chart(productsCtx, {
     }
 });
 
-// 4.3 – Prix par catégorie
+// 4.3 – Average Price by Category
 const pricesCtx = document.getElementById('pricesChart').getContext('2d');
 new Chart(pricesCtx, {
     type: 'bar',
     data: {
-        labels: ['Audio', 'Smart Home', 'Fitness', 'Accessoires', 'Lumière', 'Cuisine'],
+        labels: ['Audio', 'Smart Home', 'Fitness', 'Accessories', 'Lighting', 'Cooking'],
         datasets: [{
-            label: 'Prix moyen (€)',
+            label: 'Average Price (€)',
             data: [89, 135, 55, 32, 48, 112],
             backgroundColor: [
                 colors.blue, colors.purple, colors.green,
@@ -336,8 +332,8 @@ new Chart(pricesCtx, {
                 grid: { display: false }
             },
             y: {
-                ticks: { 
-                    color: textColor, 
+                ticks: {
+                    color: textColor,
                     font: { size: 10 },
                     callback: function(value) {
                         return '€' + value;
@@ -349,7 +345,7 @@ new Chart(pricesCtx, {
     }
 });
 
-// 4.4 – Distribution des avis
+// 4.4 – Rating Distribution
 const ratingsCtx = document.getElementById('ratingsChart').getContext('2d');
 new Chart(ratingsCtx, {
     type: 'doughnut',
@@ -387,7 +383,7 @@ new Chart(ratingsCtx, {
                 cornerRadius: 8,
                 callbacks: {
                     label: function(context) {
-                        return context.parsed + '% des avis';
+                        return context.parsed + '% of reviews';
                     }
                 }
             }
@@ -396,32 +392,14 @@ new Chart(ratingsCtx, {
 });
 
 // ============================================
-// 5. FILTRES DASHBOARD
+// 5. DASHBOARD FILTERS
 // ============================================
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
 
-        // Simuler un changement de période
         const period = this.getAttribute('data-period');
-        const message = document.createElement('div');
-        message.style.cssText = `
-            text-align: center;
-            padding: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        `;
-        message.textContent = `📊 Données filtrées : ${period} jours`;
-
-        const container = this.closest('.dashboard-filters');
-        const existing = container.querySelector('.filter-message');
-        if (existing) existing.remove();
-
         const msg = document.createElement('div');
         msg.className = 'filter-message';
         msg.style.cssText = `
@@ -434,13 +412,12 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
             font-size: 0.75rem;
             color: var(--text-muted);
         `;
-        msg.textContent = `📊 Filtre : ${period} jours – données mises à jour`;
+        msg.textContent = `📊 Filter: ${period} days – data updated`;
 
-        // Supprimer l'ancien message s'il existe
-        const oldMsg = container.parentElement.querySelector('.filter-message');
+        const oldMsg = document.querySelector('.filter-message');
         if (oldMsg) oldMsg.remove();
 
-        container.parentElement.appendChild(msg);
+        this.closest('.dashboard-filters').parentElement.appendChild(msg);
         setTimeout(() => {
             if (msg.parentElement) msg.remove();
         }, 3000);
@@ -448,13 +425,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 // ============================================
-// 6. INITIALISATION
+// 6. INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Démarrer les animations des stats
     setTimeout(animateStats, 300);
-
-    // Démarrer le pipeline automatiquement après 1.5s
     setTimeout(() => {
         if (!isRunning && progressFill.style.width !== '100%') {
             runPipeline();
@@ -463,135 +437,155 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// 7. DARK MODE – Mise à jour des graphiques
+// 7. TECHNICAL TABS
 // ============================================
-// Note: Chart.js ne supporte pas nativement le re-render dynamique.
-// Pour simplifier, on pourrait re-créer les graphiques, mais ici
-// on laisse la version initiale. Les graphiques restent lisibles.
-// Pour une version parfaite, on pourrait utiliser un observer.
+document.querySelectorAll('.tech-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+
+        document.querySelectorAll('.tech-panel').forEach(p => p.classList.remove('active'));
+
+        const panelId = 'panel-' + this.getAttribute('data-tab');
+        document.getElementById(panelId).classList.add('active');
+    });
+});
 
 // ============================================
-// 8. MODE DÉMO AUTOMATIQUE
+// 8. COPY CODE FUNCTION
+// ============================================
+function copyCode(button) {
+    const codeBlock = button.closest('.code-block');
+    const code = codeBlock.querySelector('code');
+    
+    if (code) {
+        const text = code.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            button.textContent = '✅ Copied!';
+            setTimeout(() => {
+                button.textContent = '📋 Copy';
+            }, 2000);
+        });
+    }
+}
+
+// ============================================
+// 9. AUTO DEMO MODE (?demo=true)
 // ============================================
 const isDemoMode = new URLSearchParams(window.location.search).get('demo') === 'true';
 
 if (isDemoMode) {
-    console.log('🎬 Mode démo automatique activé');
+    console.log('🎬 Auto demo mode activated');
     
-    // Désactiver le scroll manuel
-    document.body.style.overflow = 'hidden';
-    
-    const sections = [
-        '#pipeline',
-        '#dashboard', 
-        '#insights',
-        '#reporting',
-        '#documentation'
-    ];
-    
-    let currentSection = 0;
-    let isScrolling = false;
-    
-    function autoScroll() {
-        if (isScrolling) return;
-        isScrolling = true;
-        
-        const target = document.querySelector(sections[currentSection]);
-        if (!target) {
-            isScrolling = false;
-            return;
-        }
-        
-        target.scrollIntoView({ behavior: 'smooth' });
-        
-        // Mettre en évidence l'élément
-        target.style.transition = 'box-shadow 0.5s ease';
-        target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.3)';
-        setTimeout(() => {
-            target.style.boxShadow = 'none';
-        }, 2000);
-        
-        currentSection = (currentSection + 1) % sections.length;
-        
-        setTimeout(() => {
-            isScrolling = false;
-            // Si on est à la fin, recommencer
-            if (currentSection === 0) {
-                setTimeout(autoScroll, 2000);
-            } else {
-                setTimeout(autoScroll, 3000);
-            }
-        }, 3000);
-    }
-    
-    // Démarrer après 2 secondes
     setTimeout(() => {
-        // Lancer le pipeline automatiquement
         if (typeof runPipeline === 'function') {
             runPipeline();
         }
-        setTimeout(autoScroll, 3000);
-    }, 2000);
-    
-    // Afficher un indicateur "Démo automatique"
-    const demoBanner = document.createElement('div');
-    demoBanner.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(37, 99, 235, 0.95);
-        color: white;
-        padding: 10px 24px;
-        border-radius: 12px;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        z-index: 9999;
-        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        backdrop-filter: blur(10px);
-        cursor: pointer;
-    `;
-    demoBanner.innerHTML = `
-        <span style="display: flex; align-items: center; gap: 8px;">
-            <span style="display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
-            🎬 Démo automatique en cours
-        </span>
-        <span style="opacity: 0.6; font-weight: 400; font-size: 0.7rem;">
-            (cliquez pour arrêter)
-        </span>
-    `;
-    
-    demoBanner.addEventListener('click', function() {
-        // Arrêter la démo et supprimer la bannière
-        window.location.href = window.location.pathname;
-    });
-    
-    document.body.appendChild(demoBanner);
-    
-    // Ajouter le style pour le pulse
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        
+        const sections = [
+            { selector: '#pipeline', delay: 3000 },
+            { selector: '#dashboard', delay: 4000 },
+            { selector: '#insights', delay: 3500 },
+            { selector: '#reporting', delay: 3500 },
+            { selector: '#technical', delay: 3000 },
+        ];
+        
+        let currentIndex = 0;
+        
+        function scrollToSection() {
+            if (currentIndex >= sections.length) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                    currentIndex = 0;
+                    scrollToSection();
+                }, 2000);
+                return;
+            }
+            
+            const section = document.querySelector(sections[currentIndex].selector);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                section.style.transition = 'box-shadow 0.5s ease';
+                section.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.2)';
+                setTimeout(() => {
+                    section.style.boxShadow = 'none';
+                }, 1500);
+            }
+            
+            currentIndex++;
+            setTimeout(scrollToSection, sections[currentIndex]?.delay || 3000);
         }
-    `;
-    document.head.appendChild(style);
+        
+        setTimeout(scrollToSection, 5000);
+        
+        const banner = document.createElement('div');
+        banner.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(37, 99, 235, 0.95);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        `;
+        banner.innerHTML = `
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+                🎬 Auto demo in progress
+            </span>
+            <span style="opacity: 0.6; font-weight: 400; font-size: 0.7rem;">
+                (click to stop)
+            </span>
+        `;
+        banner.addEventListener('click', () => {
+            window.location.href = window.location.pathname;
+        });
+        document.body.appendChild(banner);
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.3; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+    }, 1000);
 }
 
 // ============================================
-// 9. MODE EMBED (?embed=true)
+// 10. EMBED MODE (?embed=true)
 // ============================================
 const isEmbedMode = new URLSearchParams(window.location.search).get('embed') === 'true';
 
 if (isEmbedMode) {
-    console.log('📦 Mode embed activé');
+    console.log('📦 Embed mode activated');
     
-    // Cacher les éléments superflus
     const elementsToHide = [
         document.querySelector('nav.navbar'),
         document.querySelector('footer.footer'),
@@ -605,18 +599,15 @@ if (isEmbedMode) {
         }
     });
     
-    // Réduire les marges
     document.querySelectorAll('section').forEach(section => {
         section.style.padding = '20px 0';
         section.style.minHeight = 'auto';
     });
     
-    // Ajuster la hauteur pour l'embed
     document.body.style.padding = '0';
     document.body.style.margin = '0';
     document.body.style.background = 'var(--bg-primary)';
     
-    // Ajouter un petit indicateur "Embed mode"
     const embedIndicator = document.createElement('div');
     embedIndicator.style.cssText = `
         position: fixed;
@@ -633,56 +624,6 @@ if (isEmbedMode) {
         border: 1px solid var(--border-color);
         z-index: 999;
     `;
-    embedIndicator.textContent = '📦 Mode embed';
+    embedIndicator.textContent = '📦 Embed mode';
     document.body.appendChild(embedIndicator);
-}
-// ============================================
-// 10. TECHNICAL TABS
-// ============================================
-document.querySelectorAll('.tech-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-        // Remove active class from all tabs
-        document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-
-        // Hide all panels
-        document.querySelectorAll('.tech-panel').forEach(p => p.classList.remove('active'));
-
-        // Show selected panel
-        const panelId = 'panel-' + this.getAttribute('data-tab');
-        document.getElementById(panelId).classList.add('active');
-    });
-});
-
-// ============================================
-// 11. COPY CODE FUNCTION
-// ============================================
-function copyCode(button) {
-    const codeBlock = button.closest('.code-block');
-    const code = codeBlock.querySelector('code');
-    
-    if (code) {
-        const text = code.innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            // Visual feedback
-            const originalText = button.textContent;
-            button.textContent = '✅ Copied!';
-            setTimeout(() => {
-                button.textContent = originalText;
-            }, 2000);
-        }).catch(() => {
-            // Fallback for older browsers
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            button.textContent = '✅ Copied!';
-            setTimeout(() => {
-                button.textContent = '📋 Copy';
-            }, 2000);
-        });
-    }
 }
