@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pipeline Pro – Ranjaniaina Tahiry</title>
-    <meta name="description" content="Démonstration professionnelle du pipeline E-commerce de Ranjaniaina Tahiry">
+    <meta name="description" content="Professional E-commerce Data Pipeline Demo by Ranjaniaina Tahiry">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#insights">AI Insights</a></li>
                 <li><a href="#reporting">Reporting</a></li>
-                <li><a href="#documentation">Docs</a></li>
                 <li><a href="#technical">Technical</a></li>
             </ul>
             
@@ -56,31 +55,31 @@
         <div class="container">
             <div class="hero-badge">
                 <i class="fas fa-robot"></i>
-                100% Automatique • 0 Intervention
+                100% Automated • Zero Manual Intervention
             </div>
             <h1>E-commerce Data Pipeline</h1>
             <p class="hero-subtitle">
-                Scraping → Transformation → Stockage → IA → Dashboard
+                Scraping → Transformation → Storage → AI → Dashboard
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number" data-target="12847">0</span>
-                    <span class="stat-label">Produits scrappés</span>
+                    <span class="stat-label">Products Scraped</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="24">0</span>
-                    <span class="stat-label">Sources de données</span>
+                    <span class="stat-label">Data Sources</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="99.9">0</span>
-                    <span class="stat-label">% Disponibilité</span>
+                    <span class="stat-label">% Uptime</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="365">0</span>
-                    <span class="stat-label">Jours d'historique</span>
+                    <span class="stat-label">Days History</span>
                 </div>
             </div>
         </div>
@@ -92,8 +91,8 @@
     <section id="pipeline" class="pipeline-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-sync-alt"></i> Pipeline en temps réel</h2>
-                <p class="section-desc">Visualisation dynamique de l'exécution du pipeline</p>
+                <h2><i class="fas fa-sync-alt"></i> Live Pipeline</h2>
+                <p class="section-desc">Dynamic visualization of the pipeline execution</p>
             </div>
 
             <div class="pipeline-flow">
@@ -102,9 +101,9 @@
                         <i class="fas fa-spider"></i>
                         <span class="step-number">01</span>
                     </div>
-                    <h4>Collecte</h4>
+                    <h4>Collection</h4>
                     <p>Apify • Playwright • TrendsMCP</p>
-                    <span class="step-status">En attente</span>
+                    <span class="step-status">Pending</span>
                 </div>
 
                 <div class="pipeline-arrow">
@@ -118,7 +117,7 @@
                     </div>
                     <h4>Transformation</h4>
                     <p>Polars • DuckDB • Rust</p>
-                    <span class="step-status">En attente</span>
+                    <span class="step-status">Pending</span>
                 </div>
 
                 <div class="pipeline-arrow">
@@ -130,9 +129,9 @@
                         <i class="fas fa-database"></i>
                         <span class="step-number">03</span>
                     </div>
-                    <h4>Stockage</h4>
-                    <p>TiDB Cloud • 5 Go</p>
-                    <span class="step-status">En attente</span>
+                    <h4>Storage</h4>
+                    <p>TiDB Cloud • 5 GB</p>
+                    <span class="step-status">Pending</span>
                 </div>
 
                 <div class="pipeline-arrow">
@@ -144,9 +143,9 @@
                         <i class="fas fa-brain"></i>
                         <span class="step-number">04</span>
                     </div>
-                    <h4>IA Analysis</h4>
+                    <h4>AI Analysis</h4>
                     <p>GROQ • Lightning AI</p>
-                    <span class="step-status">En attente</span>
+                    <span class="step-status">Pending</span>
                 </div>
 
                 <div class="pipeline-arrow">
@@ -160,7 +159,7 @@
                     </div>
                     <h4>Dashboard</h4>
                     <p>Apache Superset</p>
-                    <span class="step-status">En attente</span>
+                    <span class="step-status">Pending</span>
                 </div>
             </div>
 
@@ -173,10 +172,10 @@
                 </div>
                 <div class="pipeline-message">
                     <i class="fas fa-circle" style="color: #22c55e; font-size: 0.6rem;"></i>
-                    <span>Pipeline prêt à démarrer</span>
+                    <span>Pipeline ready to start</span>
                 </div>
                 <button id="startPipeline" class="btn-primary">
-                    <i class="fas fa-play"></i> Démarrer
+                    <i class="fas fa-play"></i> Start Pipeline
                 </button>
             </div>
         </div>
@@ -188,12 +187,12 @@
     <section id="dashboard" class="dashboard-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-chart-line"></i> Dashboard BI</h2>
-                <p class="section-desc">Métriques clés et visualisations interactives</p>
+                <h2><i class="fas fa-chart-line"></i> BI Dashboard</h2>
+                <p class="section-desc">Key metrics and interactive visualizations</p>
                 <div class="dashboard-filters">
-                    <button class="filter-btn active" data-period="7">7 jours</button>
-                    <button class="filter-btn" data-period="30">30 jours</button>
-                    <button class="filter-btn" data-period="90">90 jours</button>
+                    <button class="filter-btn active" data-period="7">7 days</button>
+                    <button class="filter-btn" data-period="30">30 days</button>
+                    <button class="filter-btn" data-period="90">90 days</button>
                 </div>
             </div>
 
@@ -204,8 +203,8 @@
                         <i class="fas fa-shopping-cart" style="color: #2563eb;"></i>
                     </div>
                     <div class="kpi-content">
-                        <span class="kpi-label">Ventes estimées</span>
-                        <span class="kpi-value">€342,8K</span>
+                        <span class="kpi-label">Estimated Sales</span>
+                        <span class="kpi-value">€342.8K</span>
                         <span class="kpi-change positive">+12.3%</span>
                     </div>
                 </div>
@@ -214,7 +213,7 @@
                         <i class="fas fa-star" style="color: #16a34a;"></i>
                     </div>
                     <div class="kpi-content">
-                        <span class="kpi-label">Note moyenne</span>
+                        <span class="kpi-label">Average Rating</span>
                         <span class="kpi-value">4.7</span>
                         <span class="kpi-change positive">+0.3</span>
                     </div>
@@ -224,7 +223,7 @@
                         <i class="fas fa-tag" style="color: #d97706;"></i>
                     </div>
                     <div class="kpi-content">
-                        <span class="kpi-label">Prix moyen</span>
+                        <span class="kpi-label">Average Price</span>
                         <span class="kpi-value">€89</span>
                         <span class="kpi-change negative">-4.2%</span>
                     </div>
@@ -234,7 +233,7 @@
                         <i class="fas fa-users" style="color: #db2777;"></i>
                     </div>
                     <div class="kpi-content">
-                        <span class="kpi-label">Concurrents actifs</span>
+                        <span class="kpi-label">Active Competitors</span>
                         <span class="kpi-value">24</span>
                         <span class="kpi-change positive">+2</span>
                     </div>
@@ -245,8 +244,8 @@
             <div class="charts-grid">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h4><i class="fas fa-fire" style="color: #ef4444;"></i> Tendances de recherche</h4>
-                        <span class="chart-tooltip" title="Évolution des recherches par produit">
+                        <h4><i class="fas fa-fire" style="color: #ef4444;"></i> Search Trends</h4>
+                        <span class="chart-tooltip" title="Search volume evolution by product">
                             <i class="fas fa-info-circle"></i>
                         </span>
                     </div>
@@ -254,14 +253,14 @@
                         <canvas id="trendsChart"></canvas>
                     </div>
                     <div class="chart-footer">
-                        <span>Source: Google Trends • 30 jours</span>
+                        <span>Source: Google Trends • 30 days</span>
                     </div>
                 </div>
 
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h4><i class="fas fa-crown" style="color: #d97706;"></i> Top produits</h4>
-                        <span class="chart-tooltip" title="Produits les plus performants">
+                        <h4><i class="fas fa-crown" style="color: #d97706;"></i> Top Products</h4>
+                        <span class="chart-tooltip" title="Best performing products">
                             <i class="fas fa-info-circle"></i>
                         </span>
                     </div>
@@ -269,14 +268,14 @@
                         <canvas id="productsChart"></canvas>
                     </div>
                     <div class="chart-footer">
-                        <span>Par volume de ventes</span>
+                        <span>By sales volume</span>
                     </div>
                 </div>
 
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h4><i class="fas fa-euro-sign" style="color: #16a34a;"></i> Prix par catégorie</h4>
-                        <span class="chart-tooltip" title="Prix moyen par catégorie">
+                        <h4><i class="fas fa-euro-sign" style="color: #16a34a;"></i> Average Price by Category</h4>
+                        <span class="chart-tooltip" title="Average price per category">
                             <i class="fas fa-info-circle"></i>
                         </span>
                     </div>
@@ -284,14 +283,14 @@
                         <canvas id="pricesChart"></canvas>
                     </div>
                     <div class="chart-footer">
-                        <span>Comparatif des catégories</span>
+                        <span>Category comparison</span>
                     </div>
                 </div>
 
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h4><i class="fas fa-star-half-alt" style="color: #8b5cf6;"></i> Distribution des avis</h4>
-                        <span class="chart-tooltip" title="Répartition des évaluations">
+                        <h4><i class="fas fa-star-half-alt" style="color: #8b5cf6;"></i> Rating Distribution</h4>
+                        <span class="chart-tooltip" title="Distribution of product ratings">
                             <i class="fas fa-info-circle"></i>
                         </span>
                     </div>
@@ -299,7 +298,7 @@
                         <canvas id="ratingsChart"></canvas>
                     </div>
                     <div class="chart-footer">
-                        <span>Basé sur 10 847 avis</span>
+                        <span>Based on 10,847 reviews</span>
                     </div>
                 </div>
             </div>
@@ -313,26 +312,26 @@
         <div class="container">
             <div class="section-header">
                 <h2><i class="fas fa-robot" style="color: #8b5cf6;"></i> AI Insights</h2>
-                <p class="section-desc">Analyses et recommandations générées par GROQ</p>
+                <p class="section-desc">Analysis and recommendations generated by GROQ</p>
             </div>
 
             <div class="insights-grid">
                 <div class="insight-card trending">
                     <div class="insight-badge">
-                        <i class="fas fa-fire"></i> Tendance
+                        <i class="fas fa-fire"></i> Trending
                     </div>
                     <div class="insight-icon-wrapper">
                         <i class="fas fa-headphones"></i>
                     </div>
                     <div class="insight-body">
                         <h4>SoundMax Pro</h4>
-                        <p>Augmentation de <strong>47%</strong> des recherches cette semaine.</p>
+                        <p><strong>47%</strong> increase in searches this week.</p>
                         <div class="insight-meta">
-                            <span><i class="far fa-clock"></i> Mis à jour aujourd'hui</span>
+                            <span><i class="far fa-clock"></i> Updated today</span>
                             <span><i class="fas fa-chart-line"></i> +47%</span>
                         </div>
                         <div class="insight-confidence">
-                            <span>Confiance</span>
+                            <span>Confidence</span>
                             <div class="confidence-bar">
                                 <div class="confidence-fill" style="width: 95%;"></div>
                             </div>
@@ -343,20 +342,20 @@
 
                 <div class="insight-card opportunity">
                     <div class="insight-badge">
-                        <i class="fas fa-bullseye"></i> Opportunité
+                        <i class="fas fa-bullseye"></i> Opportunity
                     </div>
                     <div class="insight-icon-wrapper">
                         <i class="fas fa-home"></i>
                     </div>
                     <div class="insight-body">
                         <h4>Smart Home</h4>
-                        <p>Prix moyen en baisse de <strong>12%</strong> ce mois.</p>
+                        <p>Average price down <strong>12%</strong> this month.</p>
                         <div class="insight-meta">
-                            <span><i class="far fa-calendar"></i> Dernier mois</span>
+                            <span><i class="far fa-calendar"></i> Last 30 days</span>
                             <span><i class="fas fa-arrow-down" style="color: #ef4444;"></i> -12%</span>
                         </div>
                         <div class="insight-confidence">
-                            <span>Confiance</span>
+                            <span>Confidence</span>
                             <div class="confidence-bar">
                                 <div class="confidence-fill" style="width: 88%;"></div>
                             </div>
@@ -367,20 +366,20 @@
 
                 <div class="insight-card recommendation">
                     <div class="insight-badge">
-                        <i class="fas fa-lightbulb"></i> Recommandation
+                        <i class="fas fa-lightbulb"></i> Recommendation
                     </div>
                     <div class="insight-icon-wrapper">
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="insight-body">
                         <h4>Focus Rating > 4.5</h4>
-                        <p>Ces produits représentent <strong>68%</strong> des ventes.</p>
+                        <p>These products represent <strong>68%</strong> of sales.</p>
                         <div class="insight-meta">
-                            <span><i class="fas fa-percentage"></i> 68% du CA</span>
-                            <span><i class="fas fa-arrow-up" style="color: #22c55e;"></i> Stratégie</span>
+                            <span><i class="fas fa-percentage"></i> 68% of revenue</span>
+                            <span><i class="fas fa-arrow-up" style="color: #22c55e;"></i> Strategy</span>
                         </div>
                         <div class="insight-confidence">
-                            <span>Confiance</span>
+                            <span>Confidence</span>
                             <div class="confidence-bar">
                                 <div class="confidence-fill" style="width: 92%;"></div>
                             </div>
@@ -391,20 +390,20 @@
 
                 <div class="insight-card alert">
                     <div class="insight-badge">
-                        <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> Alerte
+                        <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> Alert
                     </div>
                     <div class="insight-icon-wrapper">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <div class="insight-body">
-                        <h4>Nouveau concurrent</h4>
-                        <p><strong>SoundMax Pro</strong> a un nouveau concurrent avec un prix inférieur de <strong>15%</strong>.</p>
+                        <h4>New Competitor Detected</h4>
+                        <p><strong>SoundMax Pro</strong> has a new competitor with <strong>15%</strong> lower price.</p>
                         <div class="insight-meta">
-                            <span><i class="far fa-clock"></i> Détecté il y a 2h</span>
-                            <span><i class="fas fa-flag"></i> Urgence</span>
+                            <span><i class="far fa-clock"></i> Detected 2h ago</span>
+                            <span><i class="fas fa-flag"></i> Urgent</span>
                         </div>
                         <div class="insight-confidence">
-                            <span>Confiance</span>
+                            <span>Confidence</span>
                             <div class="confidence-bar">
                                 <div class="confidence-fill" style="width: 78%;"></div>
                             </div>
@@ -422,8 +421,8 @@
     <section id="reporting" class="reporting-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-envelope"></i> Reporting automatisé</h2>
-                <p class="section-desc">Exemple de rapport quotidien envoyé par Gmail API</p>
+                <h2><i class="fas fa-envelope"></i> Automated Reporting</h2>
+                <p class="section-desc">Example of daily report sent via Gmail API</p>
             </div>
 
             <div class="email-preview">
@@ -431,7 +430,7 @@
                     <div class="email-sender">
                         <i class="fas fa-user-circle"></i>
                         <div>
-                            <strong>Pipeline Automatique</strong>
+                            <strong>Pipeline Automation</strong>
                             <span>pipeline@ranjaniaina.com</span>
                         </div>
                     </div>
@@ -439,76 +438,76 @@
                         <i class="fas fa-user"></i>
                         <div>
                             <strong>Client</strong>
-                            <span>client@entreprise.com</span>
+                            <span>client@company.com</span>
                         </div>
                     </div>
-                    <span class="email-date"><i class="far fa-calendar-alt"></i> 16 Juin 2026</span>
+                    <span class="email-date"><i class="far fa-calendar-alt"></i> June 16, 2026</span>
                 </div>
 
                 <div class="email-body">
                     <div class="email-subject">
                         <i class="fas fa-file-alt"></i>
-                        <h3>Rapport quotidien – E-commerce Market Intelligence</h3>
-                        <span class="email-status delivered"><i class="fas fa-check-circle"></i> Livré</span>
+                        <h3>Daily Report – E-commerce Market Intelligence</h3>
+                        <span class="email-status delivered"><i class="fas fa-check-circle"></i> Delivered</span>
                     </div>
 
                     <div class="email-content">
                         <div class="email-summary">
                             <div class="summary-item">
                                 <i class="fas fa-check-circle" style="color: #22c55e;"></i>
-                                <span><strong>12 847</strong> produits scrappés</span>
+                                <span><strong>12,847</strong> products scraped</span>
                             </div>
                             <div class="summary-item">
                                 <i class="fas fa-chart-line" style="color: #2563eb;"></i>
-                                <span><strong>3</strong> nouvelles tendances</span>
+                                <span><strong>3</strong> new trends</span>
                             </div>
                             <div class="summary-item">
                                 <i class="fas fa-robot" style="color: #8b5cf6;"></i>
-                                <span><strong>8</strong> recommandations IA</span>
+                                <span><strong>8</strong> AI recommendations</span>
                             </div>
                             <div class="summary-item">
                                 <i class="fas fa-file-invoice" style="color: #d97706;"></i>
-                                <span>Dashboard <strong>mis à jour</strong></span>
+                                <span>Dashboard <strong>updated</strong></span>
                             </div>
                         </div>
 
                         <div class="email-details">
-                            <h4>📋 Résumé détaillé</h4>
+                            <h4>📋 Detailed Summary</h4>
                             <ul>
                                 <li>
                                     <span class="bullet"></span>
-                                    <strong>Collecte :</strong> 12 847 produits (Amazon 9 234, TikTok 3 613)
+                                    <strong>Collection:</strong> 12,847 products (Amazon 9,234, TikTok 3,613)
                                 </li>
                                 <li>
                                     <span class="bullet"></span>
-                                    <strong>Analyse :</strong> 3 nouvelles tendances identifiées, 2 opportunités de prix
+                                    <strong>Analysis:</strong> 3 new trends identified, 2 price opportunities
                                 </li>
                                 <li>
                                     <span class="bullet"></span>
-                                    <strong>Recommandations :</strong> Focus sur SoundMax Pro, ajustement prix Smart Home
+                                    <strong>Recommendations:</strong> Focus on SoundMax Pro, adjust Smart Home pricing
                                 </li>
                                 <li>
                                     <span class="bullet"></span>
-                                    <strong>Dashboard :</strong> <a href="https://superset-dashboard-2.onrender.com" target="_blank">Accéder au dashboard</a>
+                                    <strong>Dashboard:</strong> <a href="https://superset-dashboard-2.onrender.com" target="_blank">Access dashboard</a>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="email-footer">
                             <div class="email-links">
-                                <a href="#" class="btn-secondary" onclick="alert('Rapport complet disponible !')">
-                                    <i class="fas fa-file-pdf"></i> Rapport PDF
+                                <a href="#" class="btn-secondary" onclick="alert('Full report available!')">
+                                    <i class="fas fa-file-pdf"></i> PDF Report
                                 </a>
-                                <a href="#" class="btn-secondary" onclick="alert('Dashboard accessible !')">
+                                <a href="#" class="btn-secondary" onclick="alert('Dashboard accessible!')">
                                     <i class="fas fa-chart-pie"></i> Dashboard
                                 </a>
-                                <a href="#" class="btn-secondary" onclick="alert('Données brutes disponibles !')">
-                                    <i class="fas fa-database"></i> Données brutes
+                                <a href="#" class="btn-secondary" onclick="alert('Raw data available!')">
+                                    <i class="fas fa-database"></i> Raw Data
                                 </a>
                             </div>
                             <p class="email-note">
                                 <i class="fas fa-info-circle"></i>
-                                Lien permanent : <strong>report.ranjaniaina.com/2026-06-16</strong>
+                                Permanent link: <strong>report.ranjaniaina.com/2026-06-16</strong>
                             </p>
                         </div>
                     </div>
@@ -518,90 +517,32 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- DOCUMENTATION                                -->
+    <!-- TECHNICAL ARCHITECTURE                       -->
     <!-- ============================================ -->
-    <section id="documentation" class="docs-section">
+    <section id="technical" class="technical-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-book"></i> Documentation technique</h2>
-                <p class="section-desc">Architecture et technologies utilisées</p>
+                <h2><i class="fas fa-code" style="color: #2563eb;"></i> Technical Architecture</h2>
+                <p class="section-desc">Code samples and architecture of the pipeline</p>
             </div>
 
-            <div class="docs-grid">
-                <div class="docs-card">
-                    <div class="docs-icon"><i class="fas fa-cloud"></i></div>
-                    <h4>Infrastructure</h4>
-                    <ul>
-                        <li><span class="tech-tag">Google Colab</span> Développement & tests</li>
-                        <li><span class="tech-tag">Lightning AI</span> GPU T4/A100</li>
-                        <li><span class="tech-tag">TiDB Cloud</span> Stockage 5 Go</li>
-                        <li><span class="tech-tag">Render</span> Hébergement Superset</li>
-                    </ul>
-                </div>
-
-                <div class="docs-card">
-                    <div class="docs-icon"><i class="fas fa-code"></i></div>
-                    <h4>Stack technique</h4>
-                    <ul>
-                        <li><span class="tech-tag">Python</span> Scripting & orchestration</li>
-                        <li><span class="tech-tag">Rust</span> Transformations ultra-rapides</li>
-                        <li><span class="tech-tag">Polars</span> Data processing</li>
-                        <li><span class="tech-tag">DuckDB</span> SQL embarqué</li>
-                    </ul>
-                </div>
-
-                <div class="docs-card">
-                    <div class="docs-icon"><i class="fas fa-robot"></i></div>
-                    <h4>AI & ML</h4>
-                    <ul>
-                        <li><span class="tech-tag">GROQ</span> Analyse & recommandations</li>
-                        <li><span class="tech-tag">scikit-learn</span> Modèles ML</li>
-                        <li><span class="tech-tag">AutoML</span> Sélection automatique</li>
-                        <li><span class="tech-tag">Lightning AI</span> Entraînement GPU</li>
-                    </ul>
-                </div>
-
-                <div class="docs-card">
-                    <div class="docs-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Sécurité & Automatisation</h4>
-                    <ul>
-                        <li><span class="tech-tag">GitHub Actions</span> CI/CD cron jobs</li>
-                        <li><span class="tech-tag">Prefect</span> Workflows robustes</li>
-                        <li><span class="tech-tag">Gmail API</span> Reports automatisés</li>
-                        <li><span class="tech-tag">cron-job.org</span> Health checks</li>
-                    </ul>
-                </div>
+            <div class="tech-tabs">
+                <button class="tech-tab active" data-tab="scraping">🕷️ Scraping</button>
+                <button class="tech-tab" data-tab="transformation">⚙️ Transformation</button>
+                <button class="tech-tab" data-tab="storage">🗄️ Storage</button>
+                <button class="tech-tab" data-tab="ai">🤖 AI Analysis</button>
+                <button class="tech-tab" data-tab="dashboard">📊 Dashboard</button>
             </div>
-        </div>
-    </section>
 
-   <!-- ============================================ -->
-<!-- TECHNICAL ARCHITECTURE                       -->
-<!-- ============================================ -->
-<section id="technical" class="technical-section">
-    <div class="container">
-        <div class="section-header">
-            <h2><i class="fas fa-code" style="color: #2563eb;"></i> Technical Architecture</h2>
-            <p class="section-desc">Code samples and architecture of the pipeline</p>
-        </div>
-
-        <div class="tech-tabs">
-            <button class="tech-tab active" data-tab="scraping">🕷️ Scraping</button>
-            <button class="tech-tab" data-tab="transformation">⚙️ Transformation</button>
-            <button class="tech-tab" data-tab="storage">🗄️ Storage</button>
-            <button class="tech-tab" data-tab="ai">🤖 AI Analysis</button>
-            <button class="tech-tab" data-tab="dashboard">📊 Dashboard</button>
-        </div>
-
-        <div class="tech-content">
-            <!-- Scraping -->
-            <div class="tech-panel active" id="panel-scraping">
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">Python - Apify Scraper</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                    </div>
-                    <pre><code>from apify_client import ApifyClient
+            <div class="tech-content">
+                <!-- Scraping -->
+                <div class="tech-panel active" id="panel-scraping">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python - Apify Scraper</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>from apify_client import ApifyClient
 import os
 
 # Initialize Apify client
@@ -628,13 +569,13 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
 
 print(f"✅ Scraped {len(products)} products")
 # Output: ✅ Scraped 47 products</code></pre>
-                </div>
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">JavaScript - Playwright Scraper</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code>import { chromium } from 'playwright';
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">JavaScript - Playwright Scraper</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>import { chromium } from 'playwright';
 
 async function scrapeTikTok() {
     const browser = await chromium.launch();
@@ -655,17 +596,17 @@ async function scrapeTikTok() {
     await browser.close();
     return products;
 }</code></pre>
-                </div>
-            </div>
-
-            <!-- Transformation -->
-            <div class="tech-panel" id="panel-transformation">
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">Rust - Ultra-fast Processing (Maturin)</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code>// src/lib.rs - Rust transformation module
+                </div>
+
+                <!-- Transformation -->
+                <div class="tech-panel" id="panel-transformation">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Rust - Ultra-fast Processing (Maturin)</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>// src/lib.rs - Rust transformation module
 use pyo3::prelude::*;
 use rayon::prelude::*;
 
@@ -681,9 +622,9 @@ pub struct Product {
 }
 
 #[pyfunction]
-pub fn process_data(products: Vec<Product>) -> PyResult<Vec<f64>> {
+pub fn process_data(products: Vec&lt;Product&gt;) -> PyResult&lt;Vec&lt;f64&gt;&gt; {
     // Parallel processing with Rayon
-    let prices: Vec<f64> = products
+    let prices: Vec&lt;f64&gt; = products
         .par_iter()
         .map(|p| {
             // Apply discount logic
@@ -699,8 +640,8 @@ pub fn process_data(products: Vec<Product>) -> PyResult<Vec<f64>> {
 }
 
 #[pyfunction]
-pub fn calculate_stats(py: Python, products: Vec<Product>) -> PyResult<Vec<f64>> {
-    let prices: Vec<f64> = products.iter().map(|p| p.price).collect();
+pub fn calculate_stats(py: Python, products: Vec&lt;Product&gt;) -> PyResult&lt;Vec&lt;f64&gt;&gt; {
+    let prices: Vec&lt;f64&gt; = products.iter().map(|p| p.price).collect();
     let sum: f64 = prices.par_iter().sum();
     let avg = sum / prices.len() as f64;
     let max = prices.par_iter().fold(|| 0.0, |a, b| a.max(*b)).max().unwrap();
@@ -709,19 +650,19 @@ pub fn calculate_stats(py: Python, products: Vec<Product>) -> PyResult<Vec<f64>>
 }
 
 #[pymodule]
-fn rust_transformer(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_class::<Product>()?;
+fn rust_transformer(_py: Python, m: &amp;PyModule) -> PyResult&lt;()&gt; {
+    m.add_class::&lt;Product&gt;()?;
     m.add_function(wrap_pyfunction!(process_data, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_stats, m)?)?;
     Ok(())
 }</code></pre>
-                </div>
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">Python - Polars Processing</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code>import polars as pl
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python - Polars Processing</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>import polars as pl
 import rust_transformer  # Compiled Rust module
 
 # Load data
@@ -741,17 +682,17 @@ processed = rust_transformer.process_data(products)
 
 print(f"✅ Processing complete: {len(processed)} products")
 print(f"📊 Average price: ${sum(processed)/len(processed):.2f}")</code></pre>
-                </div>
-            </div>
-
-            <!-- Storage -->
-            <div class="tech-panel" id="panel-storage">
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">SQL - TiDB Cloud Schema</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code>-- Distributed database schema (MySQL compatible)
+                </div>
+
+                <!-- Storage -->
+                <div class="tech-panel" id="panel-storage">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">SQL - TiDB Cloud Schema</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>-- Distributed database schema (MySQL compatible)
 CREATE TABLE products (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -775,25 +716,18 @@ SELECT
 FROM products
 WHERE scraped_at > DATE_SUB(NOW(), INTERVAL 7 DAY)
 GROUP BY category
-ORDER BY avg_rating DESC;
-
--- Vector search for similar products
-SELECT name, price, rating,
-    VEC_DISTANCE(embedding, '[0.1, 0.2, ...]') as similarity
-FROM products
-ORDER BY similarity
-LIMIT 10;</code></pre>
-                </div>
-            </div>
-
-            <!-- AI Analysis -->
-            <div class="tech-panel" id="panel-ai">
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">Python - GROQ AI Analysis</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+ORDER BY avg_rating DESC;</code></pre>
                     </div>
-                    <pre><code>from groq import Groq
+                </div>
+
+                <!-- AI Analysis -->
+                <div class="tech-panel" id="panel-ai">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python - GROQ AI Analysis</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>from groq import Groq
 import json
 
 def analyze_trends(products):
@@ -843,17 +777,17 @@ def analyze_trends(products):
   ]
 }
 """</code></pre>
-                </div>
-            </div>
-
-            <!-- Dashboard -->
-            <div class="tech-panel" id="panel-dashboard">
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">JavaScript - Dashboard Charts (Chart.js)</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code>// Chart.js - Interactive dashboard
+                </div>
+
+                <!-- Dashboard -->
+                <div class="tech-panel" id="panel-dashboard">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">JavaScript - Dashboard Charts (Chart.js)</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>// Chart.js - Interactive dashboard
 const ctx = document.getElementById('trendsChart').getContext('2d');
 
 new Chart(ctx, {
@@ -901,13 +835,13 @@ setInterval(() => {
             chart.update();
         });
 }, 30000); // Update every 30 seconds</code></pre>
-                </div>
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-lang">Python - Superset Dashboard</span>
-                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                     </div>
-                    <pre><code># Apache Superset Configuration
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python - Superset Dashboard</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Apache Superset Configuration
 from superset import app
 from superset.connectors.sqla.models import SqlaTable
 
@@ -925,16 +859,13 @@ dashboard = app.create_dashboard(
         {"name": "Top Products", "type": "bar", "query": "SELECT...",},
         {"name": "Rating Distribution", "type": "pie", "query": "SELECT...",},
     ]
-)
-
-# Deploy to Render
-# Hosted at: https://superset-dashboard-2.onrender.com</code></pre>
+)</code></pre>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-        
+    </section>
+
     <!-- ============================================ -->
     <!-- FOOTER                                       -->
     <!-- ============================================ -->
@@ -959,8 +890,8 @@ dashboard = app.create_dashboard(
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 Ranjaniaina Tahiry – Tous droits réservés</span>
-                <span class="footer-version">v2.0 • Démo optimisée</span>
+                <span>© 2026 Ranjaniaina Tahiry – All rights reserved</span>
+                <span class="footer-version">v2.0 • Optimized Demo</span>
             </div>
         </div>
     </footer>
