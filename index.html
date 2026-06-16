@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pipeline Demo – Ranjaniaina Tahiry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="icon">⚡</span>
+                <span>Ranjaniaina Tahiry</span>
+            </div>
+            <nav>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#insights">AI Insights</a>
+                <a href="#reporting">Reporting</a>
+            </nav>
+            <div class="status">
+                <span class="dot"></span>
+                Pipeline 100% Automatique
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>🔄 E-commerce Data Pipeline</h1>
+            <p class="subtitle">De la collecte au dashboard – 0 intervention manuelle</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="number">10K+</span>
+                    <span class="label">Produits scrapés</span>
+                </div>
+                <div class="stat">
+                    <span class="number">24/7</span>
+                    <span class="label">Automatisation</span>
+                </div>
+                <div class="stat">
+                    <span class="number">99.9%</span>
+                    <span class="label">Disponibilité</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE VISUAL -->
+    <section id="pipeline" class="pipeline">
+        <div class="container">
+            <h2>📋 Pipeline en temps réel</h2>
+            <div class="pipeline-flow">
+                <div class="step" data-step="1">
+                    <div class="step-icon">🕷️</div>
+                    <div class="step-label">Scraping</div>
+                    <div class="step-desc">Amazon, TikTok, Google</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step" data-step="2">
+                    <div class="step-icon">⚙️</div>
+                    <div class="step-label">Transformation</div>
+                    <div class="step-desc">Polars / Rust</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step" data-step="3">
+                    <div class="step-icon">🗄️</div>
+                    <div class="step-label">Stockage</div>
+                    <div class="step-desc">TiDB Cloud</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step" data-step="4">
+                    <div class="step-icon">🤖</div>
+                    <div class="step-label">AI Analysis</div>
+                    <div class="step-desc">GROQ / Lightning</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step" data-step="5">
+                    <div class="step-icon">📊</div>
+                    <div class="step-label">Dashboard</div>
+                    <div class="step-desc">Apache Superset</div>
+                </div>
+            </div>
+            <div class="pipeline-status">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <p class="status-text">⏳ Démarrage du pipeline...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <h2>📊 Dashboard BI – E-commerce</h2>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>📈 Tendances de recherche</h3>
+                    <canvas id="trendsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>🏷️ Top produits</h3>
+                    <canvas id="productsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>💰 Prix moyen par catégorie</h3>
+                    <canvas id="pricesChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>⭐ Distribution des avis</h3>
+                    <canvas id="ratingsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI INSIGHTS -->
+    <section id="insights" class="insights">
+        <div class="container">
+            <h2>🤖 AI Insights (GROQ)</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-icon">🔥</div>
+                    <div class="insight-content">
+                        <h4>Produit tendance</h4>
+                        <p>"Les écouteurs sans fil <strong>SoundMax Pro</strong> ont vu une augmentation de <strong>47%</strong> des recherches cette semaine."</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">📉</div>
+                    <div class="insight-content">
+                        <h4>Opportunité prix</h4>
+                        <p>"La catégorie <strong>Smart Home</strong> a un prix moyen de <strong>$89</strong>, en baisse de 12% par rapport au mois dernier."</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">⭐</div>
+                    <div class="insight-content">
+                        <h4>Recommandation</h4>
+                        <p>"Concentrer le scraping sur les produits avec <strong>rating > 4.5</strong> – ils représentent <strong>68%</strong> des ventes."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPORTING -->
+    <section id="reporting" class="reporting">
+        <div class="container">
+            <h2>📧 Reporting automatisé</h2>
+            <div class="email-preview">
+                <div class="email-header">
+                    <span class="from">📤 De : pipeline@ranjaniaina.com</span>
+                    <span class="to">📥 À : client@entreprise.com</span>
+                    <span class="date">📅 16 Juin 2026</span>
+                </div>
+                <div class="email-body">
+                    <h3>📊 Rapport quotidien – E-commerce</h3>
+                    <ul>
+                        <li>✅ <strong>12 847</strong> produits scrappés (Amazon, TikTok)</li>
+                        <li>📈 <strong>3</strong> nouvelles tendances identifiées</li>
+                        <li>🤖 <strong>8</strong> recommandations IA générées</li>
+                        <li>📊 Dashboard mis à jour : <a href="#" onclick="alert('Dashboard accessible !')">Voir le dashboard</a></li>
+                    </ul>
+                    <div class="email-footer">
+                        <span>🔗 Lien permanent : <a href="#" onclick="alert('Rapport complet disponible !')">report.ranjaniaina.com/2026-06-16</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Ranjaniaina Tahiry – Data & Automation Engineer</p>
+            <div class="footer-links">
+                <a href="mailto:ranjaniainatahiry@gmail.com">📧 Email</a>
+                <a href="https://github.com/ranjaniainatahiry-dotcom">🐙 GitHub</a>
+                <a href="https://superset-dashboard-2.onrender.com">📊 Superset Live</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
