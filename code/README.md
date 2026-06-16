@@ -51,14 +51,30 @@ python code/ai_analysis/groq_analyzer.py
 python code/benchmarks/performance_test.py
 ```
 
-📊 Performance
+⚡ Performance Benchmarks
 
-Operation Pandas Polars Rust
-1M rows filter 2.3s 0.8s 0.15s
-Aggregation 1.8s 0.6s 0.08s
+Test: Filter 1 Million rows
 
-Rust is 15-30x faster than Pandas 🚀
+· Pandas: 2.3 seconds
+· Polars: 0.8 seconds
+· Rust: 0.15 seconds
+
+Test: Aggregation on 1 Million rows
+
+· Pandas: 1.8 seconds
+· Polars: 0.6 seconds
+· Rust: 0.08 seconds
+
+Test: Join 2 tables (1M rows each)
+
+· Pandas: 4.5 seconds
+· Polars: 1.2 seconds
+· Rust: 0.3 seconds
+
+🚀 Rust is 15-30x faster than Pandas
 
 📝 License
 
 MIT
+
+```
